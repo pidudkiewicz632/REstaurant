@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../util/api";
 import Image from "next/image";
 import { useState } from "react";
 import AddButton from "../component/AddButton";
@@ -28,7 +28,7 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await api.get("/api/products");
 
   return {
     props: {

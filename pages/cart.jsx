@@ -9,7 +9,7 @@ import {
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
 import { reset } from "../store/cartSlice";
-import axios from "axios";
+import api from "../util/api";
 import OrderDetails from "../component/OrderDetails";
 
 const Cart = () => {
@@ -26,8 +26,8 @@ const Cart = () => {
   const createOrder = async (data) => {
     try {
       data.products = cart.products;
-      console.log(data);
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      
+      const res = await api.post("/api/orders", data);
       if (res.status === 201) {
         dispatch(reset());
         router.push(`/order/${res.data._id}`);

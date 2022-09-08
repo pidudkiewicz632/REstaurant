@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import styles from "../../styles/Products.module.scss";
 import FoodCard from "../../component/FoodCard";
 import Image from "next/image";
-import axios from "axios";
+import api from "../../util/api";
 import Pagination from "../../component/Pagination";
 import ProductFilter from "../../component/ProductFilter";
 
@@ -47,7 +47,7 @@ const Products = ({ foodList }) => {
 export default Products;
 
 export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await api.get("/api/products");
 
   return {
     props: {

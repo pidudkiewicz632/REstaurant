@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "../../styles/Admin.module.scss";
-import axios from "axios";
+import api from "../../util/api";
 import { useState } from "react";
 import AddButton from "../../component/AddButton";
 import AddProduct from "../../component/AddProduct";
@@ -47,8 +47,8 @@ const Admin = ({ orders, products }) => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+      const res = await api.delete(
+        "/api/products/" + id
       );
       setProductList(productList.filter((product) => product._id !== id));
     } catch (err) {
@@ -61,7 +61,7 @@ const Admin = ({ orders, products }) => {
     const currentStatus = item.status;
 
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await api.put("/api/orders/" + id, {
         status: currentStatus + 1,
       });
 
@@ -286,8 +286,8 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productsRes = await axios.get("http://localhost:3000/api/products");
-  const ordersRes = await axios.get("http://localhost:3000/api/orders");
+  const productsRes = await api.get("/api/products");
+  const ordersRes = await api.get("/api/orders");
 
   return {
     props: {

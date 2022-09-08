@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/cartSlice";
-import axios from "axios";
+import api from "../../util/api"
 
 
 const Product = ({ food }) => {
@@ -96,8 +96,8 @@ const Product = ({ food }) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(
-    `http://localhost:3000/api/products/${params.id}`
+  const res = await api.get(
+    `/api/products/${params.id}`
   );
 
   return {

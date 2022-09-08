@@ -1,10 +1,9 @@
 import styles from "../../styles/Order.module.scss";
 import Image from "next/image";
-import axios from "axios";
+import api from "../../util/api"
 
 const Order = ({order}) => {
   const status = order.status;
-  console.log(order.products)
 
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -146,8 +145,8 @@ const Order = ({order}) => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(
-    `http://localhost:3000/api/orders/${params.id}`
+  const res = await api.get(
+    `/api/orders/${params.id}`
   );
 
   return {

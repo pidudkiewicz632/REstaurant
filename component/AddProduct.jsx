@@ -1,10 +1,8 @@
 import styles from "../styles/AddProduct.module.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/router";
+import api from "../util/api";
 import { productValidation } from "../util/validation";
 import { categories } from "../util/product";
-import { useMemo } from "react";
 
 const AddProduct = ({ setClose, handleData, edit, productData, setEdit }) => {
   const defaultValidationStates = {
@@ -38,8 +36,6 @@ const AddProduct = ({ setClose, handleData, edit, productData, setEdit }) => {
     (a, v) => ({ ...a, [v]: false }),
     {}
   );
-
-  console.log(defaultSelectedCategories);
 
   const [data, setData] = useState({
     file: "",
@@ -148,7 +144,7 @@ const AddProduct = ({ setClose, handleData, edit, productData, setEdit }) => {
       setValidationStates({ ...newValidationStates });
 
       if (isValid) {
-        const defaultUrl = "http://localhost:3000/api/products/";
+        const defaultUrl = "/api/products/";
         const [method, url] = edit
           ? ["PUT", defaultUrl + productData?._id]
           : ["POST", defaultUrl];
@@ -161,7 +157,7 @@ const AddProduct = ({ setClose, handleData, edit, productData, setEdit }) => {
           reqData.append("file", data.file);
           reqData.append("upload_preset", "uploads");
 
-          const uploadRes = await axios.post(
+          const uploadRes = await api.post(
             "https://api.cloudinary.com/v1_1/dtbxn3uui/image/upload",
             reqData
           );
@@ -186,7 +182,7 @@ const AddProduct = ({ setClose, handleData, edit, productData, setEdit }) => {
           img: imgUrl,
         };
 
-        const res = await axios({
+        const res = await api({
           method: method,
           url: url,
           data: product,
