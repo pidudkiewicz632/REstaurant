@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin: 40px 0px;
+}
+
+.input {
+  padding: 10px 10px;
+}
+
+.price{
+  padding: 10px 10px;
+  width: 100px;
+}
+
+.select {
+  padding: 10px 10px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.text {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  input {
+    margin-top: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 10px;
+    display: flex;
+  }
+
+  .checkboxWrapper {
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

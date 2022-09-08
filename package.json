@@ -1,0 +1,29 @@
+{
+  "name": "order-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@paypal/react-paypal-js": "^7.8.1",
+    "@reduxjs/toolkit": "^1.8.5",
+    "axios": "^0.27.2",
+    "cookie": "^0.5.0",
+    "mongoose": "^6.5.2",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-paypal-js": "0.0.1-security",
+    "react-redux": "^8.0.2",
+    "sass": "^1.54.4",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "eslint": "8.22.0",
+    "eslint-config-next": "12.2.5"
+  }
+}
