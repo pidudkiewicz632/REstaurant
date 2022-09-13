@@ -10,10 +10,9 @@ const ProductSchema = new mongoose.Schema(
       maxlength: 60,
       validate: {
         validator: function (v) {
-          console.log(";;;; " + v);
           return /^[a-zA-Z0-9 -]*$/.test(v);
         },
-        message: (props) => "Illegal characters were used!" + a,
+        message: "Illegal characters were used!",
       },
     },
     desc: {
